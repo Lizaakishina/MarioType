@@ -1,3 +1,3 @@
 ﻿  MarioType.cpp
-C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(67,29): warning C4305: +=: усечение из "double" в "float"
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(70,29): warning C4305: +=: усечение из "double" в "float"
   MarioType.vcxproj -> C:\Users\_А_К_1_Ш_\source\repos\MarioType\Debug\MarioType.exe

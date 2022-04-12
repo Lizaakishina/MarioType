@@ -24,10 +24,13 @@ int level = 1;
 
 void ClearMap()// очистка карты
 {
-    for (int i = 0; i < mapWidth; i++) map[0][i] = ' ';
-    for (int j = 1; j < mapHeight; j++)
+    for (int i = 0; i < mapWidth; i++)
     {
-        sprintf(map[j], map[0]);
+        map[0][i] = ' ';
+        for (int j = 1; j < mapHeight; j++)
+        {
+            sprintf(map[j], map[0]);
+        }
     }
 }
 
@@ -181,7 +184,7 @@ int main()
         setCursor(0, 0);
         ShowMap();
 
-        Sleep(7);
+        Sleep(2);
     } while (GetKeyState(VK_ESCAPE) >= 0); //выход из цикла при нажатии ескейп
     return 0;
 }
