@@ -12,6 +12,7 @@ typedef struct SObject { //структура, хранящая координа
     float vertSpeed;
     BOOL IsFLly;
     char cType;//каким символом рисовать объект
+    float horizonSpeed;
 }MarioObj; //имя для использования в будующем
 
 
@@ -19,6 +20,8 @@ char map[mapHeight][mapWidth + 1]; //создаем карту
 MarioObj mario; //создание переменной персонажа "марио"
 MarioObj* brick = NULL;//динамический массив для создания блоков
 int brickLength;
+MarioObj* enemy = NULL;//динамический массив для создания врагов
+int enemyLenght;
 int level = 1;
 
 
@@ -58,6 +61,7 @@ void InitObject(MarioObj* obj, float xPos, float yPos, float oWidth, float oHeig
     (*obj).height = oHeight;
     (*obj).vertSpeed = 0;
     (*obj).cType = inType;
+    (*obj).horizonSpeed = 0.3;
 }
 
 
@@ -85,6 +89,48 @@ void VertMoveObject(MarioObj* obj)
             }
             break;
         }
+    }
+}
+
+void DeleteEnemy(int i)//убийство врага
+{
+    enemyLenght--;
+    enemy[i] = enemy[enemyLenght];
+    enemy = (MarioObj*)realloc(enemy, sizeof(*enemy) * enemyLenght);
+}
+void MarioCollision()//столкновение с врагом
+{
+    for (int i = 0; i < enemyLenght; i++)
+        if (IsCollision(mario, enemy[i]))
+        {
+            if ((mario.IsFLly == TRUE) && (mario.vertSpeed > 0) && (mario.y + mario.height < enemy[i].y + enemy[i].height * 0.5))
+            {
+                DeleteEnemy(i);
+                i--;
+                continue;
+            }
+            else
+                CreateLevel(level);
+        }
+}
+void HorizonMoveObject(MarioObj* obj) //горизонтальное перемещение объектов
+{
+    obj[0].x += obj[0].horizonSpeed;
+
+    for (int i = 0; i < brickLength; i++)
+        if (IsCollision(obj[0], brick[i]))//проверка на столкновение
+        {
+            obj[0].x -= obj[0].horizonSpeed;
+            obj[0].horizonSpeed = -obj[0].horizonSpeed;
+            return;
+        }
+    MarioObj tmp = *obj;
+    VertMoveObject(&tmp);
+    if (tmp.IsFLly == TRUE)
+    {
+        obj[0].x -= obj[0].horizonSpeed;
+        obj[0].horizonSpeed = -obj[0].horizonSpeed;
+
     }
 }
 
@@ -129,6 +175,7 @@ void HorisonMoveMap(float dx)//горизонтальное перемещени
         }
     mario.x += dx;
     for (int i = 0; i < brickLength; i++) brick[i].x += dx;
+    for (int i = 0; i < enemyLenght; i++) enemy[i].x += dx; //перемещение врагов вместе с картой
 }
 
 
@@ -151,6 +198,9 @@ void CreateLevel(int lvl)//создание уровня
         InitObject(brick + 3, 120, 15, 10, 10, '#');
         InitObject(brick + 4, 150, 20, 40, 5, '#');
         InitObject(brick + 5, 210, 15, 10, 10, '+');
+        enemyLenght = 1;//1 враг
+        enemy = (MarioObj*)realloc(enemy, sizeof(*enemy) * enemyLenght);
+        InitObject(enemy + 0, 25, 10, 3, 2, 'o');
     }
     if (lvl == 2)
     {
@@ -178,13 +228,26 @@ int main()
         if (mario.y > mapHeight) CreateLevel(level);//если марио уйдет в закат-уровень начнется заново
 
         VertMoveObject(&mario);
+        MarioCollision();
         for (int i = 0; i < brickLength; i++) PutObjectOnMap(brick[i]);//проходимся по циклу чтобы разместить все блоки
+        for (int i = 0; i < enemyLenght; i++)
+        {
+            VertMoveObject(enemy + i);
+            HorizonMoveObject(enemy + i);
+            if (enemy[i].y > mapHeight)
+            {
+                DeleteEnemy(i);
+                i--;
+                continue;
+            }
+            PutObjectOnMap(enemy[i]);
+        }//проходимся по циклу чтобы разместить врагов&убивать врагов
         PutObjectOnMap(mario); //помещаем персонажа на экран
 
         setCursor(0, 0);
         ShowMap();
 
-        Sleep(2);
+        Sleep(7);
     } while (GetKeyState(VK_ESCAPE) >= 0); //выход из цикла при нажатии ескейп
     return 0;
 }
