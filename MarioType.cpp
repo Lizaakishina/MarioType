@@ -83,7 +83,7 @@ void VertMoveObject(MarioObj* obj)
             if (brick[i].cType == '+')//если наступить на такой блок
             {
                 level++;//счетчик уровня
-                if (level > 2)level = 1;//прошли второй - переходим обратно на первый
+                if (level > 3)level = 1;//прошли третий - переходим обратно на первый
                 CreateLevel(level);//создаем нужный уровень
                 Sleep(1000);
             }
@@ -184,32 +184,63 @@ BOOL IsCollision(MarioObj o1, MarioObj o2)//проверка на столкно
     return((o1.x + o1.width) > o2.x) && (o1.x < (o2.x + o2.width)) && ((o1.y + o1.height) > o2.y) && (o1.y < (o2.y + o1.height));
 }
 
+MarioObj* GetNewBrick()//функция для создания блоков
+{
+    brickLength++;
+    brick = (MarioObj*)realloc(brick, sizeof(*brick) * brickLength);
+    return brick + brickLength - 1;
+}
+MarioObj* GetNewEnemy()//функция для создания врагов
+{
+    enemyLenght++;
+    enemy = (MarioObj*)realloc(enemy, sizeof(*enemy) * enemyLenght);
+    return enemy + enemyLenght - 1;
+}
 
 void CreateLevel(int lvl)//создание уровня
 {
     InitObject(&mario, 39, 10, 3, 3, '@');
     if (lvl == 1)
     {
-        brickLength = 6;//6 блоков
+        brickLength = 0;
         brick = (MarioObj*)realloc(brick, sizeof(*brick) * brickLength);
-        InitObject(brick, 20, 20, 40, 5, '#');
-        InitObject(brick + 1, 60, 15, 10, 10, '#');
-        InitObject(brick + 2, 80, 20, 20, 5, '#');
-        InitObject(brick + 3, 120, 15, 10, 10, '#');
-        InitObject(brick + 4, 150, 20, 40, 5, '#');
-        InitObject(brick + 5, 210, 15, 10, 10, '+');
-        enemyLenght = 1;//1 враг
-        enemy = (MarioObj*)realloc(enemy, sizeof(*enemy) * enemyLenght);
-        InitObject(enemy + 0, 25, 10, 3, 2, 'o');
+        InitObject(GetNewBrick(), 20, 20, 40, 5, '#');
+        InitObject(GetNewBrick(), 60, 15, 40, 10, '#');
+        InitObject(GetNewBrick(), 100, 20, 20, 5, '#');
+        InitObject(GetNewBrick(), 120, 15, 10, 10, '#');
+        InitObject(GetNewBrick(), 150, 20, 40, 5, '#');
+        InitObject(GetNewBrick(), 210, 15, 10, 10, '+');
     }
     if (lvl == 2)
     {
-        brickLength = 4;//4 блока
+        brickLength = 0;
         brick = (MarioObj*)realloc(brick, sizeof(*brick) * brickLength);
-        InitObject(brick, 20, 20, 40, 5, '#');
-        InitObject(brick + 1, 80, 20, 15, 5, '#');
-        InitObject(brick + 2, 120, 15, 15, 10, '#');
-        InitObject(brick + 3, 160, 10, 15, 15, '+');
+        InitObject(GetNewBrick(), 20, 20, 40, 5, '#');
+        InitObject(GetNewBrick(), 60, 15, 10, 10, '#');
+        InitObject(GetNewBrick(), 80, 20, 20, 5, '#');
+        InitObject(GetNewBrick(), 120, 15, 10, 10, '#');
+        InitObject(GetNewBrick(), 150, 20, 40, 5, '#');
+        InitObject(GetNewBrick(), 210, 15, 10, 10, '+');
+        enemyLenght = 0;
+        enemy = (MarioObj*)realloc(enemy, sizeof(*enemy) * enemyLenght);
+        InitObject(GetNewEnemy(), 25, 10, 3, 2, 'o');
+        InitObject(GetNewEnemy(), 65, 10, 3, 2, 'o');
+        InitObject(GetNewEnemy(), 120, 10, 3, 2, 'o');
+        InitObject(GetNewEnemy(), 160, 10, 3, 2, 'o');
+        InitObject(GetNewEnemy(), 175, 10, 3, 2, 'o');
+    }
+    if (lvl == 3)
+    {
+        brickLength = 0;//4 блока
+        brick = (MarioObj*)realloc(brick, sizeof(*brick) * brickLength);
+        InitObject(GetNewBrick(), 20, 20, 40, 5, '#');
+        InitObject(GetNewBrick(), 80, 20, 15, 5, '#');
+        InitObject(GetNewBrick(), 120, 15, 15, 10, '#');
+        InitObject(GetNewBrick(), 160, 10, 15, 15, '+');
+        enemyLenght = 0;
+        enemy = (MarioObj*)realloc(enemy, sizeof(*enemy) * enemyLenght);
+        InitObject(GetNewEnemy(), 25, 10, 3, 2, 'o');
+        InitObject(GetNewEnemy(), 130, 10, 3, 2, 'o');
     }
 }
 
@@ -247,7 +278,7 @@ int main()
         setCursor(0, 0);
         ShowMap();
 
-        Sleep(7);
+        Sleep(2);
     } while (GetKeyState(VK_ESCAPE) >= 0); //выход из цикла при нажатии ескейп
     return 0;
 }
