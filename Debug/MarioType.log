@@ -1,4 +1,46 @@
 ﻿  MarioType.cpp
-C:\Users\Елена\OneDrive\Документы\GitHub\MarioType\MarioType.cpp(64,30): warning C4305: =: усечение из "double" в "float"
-C:\Users\Елена\OneDrive\Документы\GitHub\MarioType\MarioType.cpp(74,29): warning C4305: +=: усечение из "double" в "float"
-  MarioType.vcxproj -> C:\Users\Елена\OneDrive\Документы\GitHub\MarioType\Debug\MarioType.exe
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(85,29): warning C4305: +=: усечение из "double" в "float"
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(98,17): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(98,23): error C2065: enemyLength: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(118,5): error C2065: enemyLength: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(119,5): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(119,16): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(119,22): error C2065: enemyLength: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(120,5): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(120,32): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(120,47): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(120,56): error C2065: enemyLength: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(126,25): error C2065: enemyLength: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(127,32): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(127,12): error C2660: IsCollision: функция не принимает 1 аргументов
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(79,6): message : см. объявление "IsCollision"
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(129,17): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(133,50): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(133,63): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(143,17): error C2065: enemy: необъявленный идентификатор
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(171,31): warning C4805: ==: небезопасное смешение типа "BOOL" и типа "bool" в операции
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(197,6): error C2601: IsPosInMap: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(203,6): error C2601: PutObjectOnMap: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(217,6): error C2601: setCursor: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(226,6): error C2601: HorisonMoveMap: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(240,6): error C2601: IsCollision: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(246,11): error C2601: GetNewBrick: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(252,11): error C2601: GetNewEnemy: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(259,11): error C2601: GetNewBrick: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(267,11): error C2601: GetNewEnemy: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(275,6): error C2601: PutScoreOnMap: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(287,6): error C2601: CreateLevel: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(323,5): error C2601: main: недопустимые локальные определения функций
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): message : эта строка содержит скобку "{", которая пока не имеет парной
+C:\Users\_А_К_1_Ш_\source\repos\MarioType\MarioType.cpp(155): fatal error C1075: "{": не найдена несоответствующая лексема
